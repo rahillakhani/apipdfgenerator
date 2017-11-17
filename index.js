@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 
 let generatePDF = require('./generatePDF.js');
-port = 3000;
+var port = process.env.PORT || 8080;
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
