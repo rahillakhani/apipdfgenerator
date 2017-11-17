@@ -1,0 +1,21 @@
+{
+  "name": "@rahillakhani/pdfgeneratorapi",
+  "version": "1.0.0",
+  "description": "pdf generator api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rahillakhani",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/rahillakhani/apipdf"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "html-pdf": "^2.2.0",
+    "pdfkit": "^0.8.3"
+  }
+}
