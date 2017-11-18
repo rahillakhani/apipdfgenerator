@@ -1,31 +1,29 @@
-// PDFDocument = require('pdfkit');
-
-// let doc = new PDFDocument;
 var pdf = require('html-pdf');
+var fs =require('fs');
+var path = require('path');
 
-var html = `<pre>something</pre>`
 
 const options = {
-	"format": "Letter",        // allowed units: A3, A4, A5, Legal, Letter, Tabloid
+	"format": "Letter",
 	"orientation": "portrait",
 	"border": "0.2",  
 };
 
-
-var generatePDF = (req,res) => {
-	console.log(req.query);
+var generatePDF = (req, res) => {
 	var data = req.query;
-	var html = '<table>'
-	for (var key in data)
-		html = html + `<tr><td>${key} </td><td>${data[key]}</td></tr>`
-
-	html = html+ '</table>'
-
-	pdf.create(`<div>${html}</div>`, options).toStream(function (err, stream) {
+	var template = fs.readFileSync(path.resolve(__dirname + '/email-template.html'), 'utf-8').replace('[FULLNAME]', data.Name)
+	.replace('[JK]', data.JK)
+	.replace('[LOCALBOARD]', data.Local)
+	.replace('[BARCODE]', data.Barcode)
+	.replace('[USER]', data.Image)
+	.replace('[PATICIPANT_TYPE]', data.ParticipantType)
+	.replace('[DOB]', data.dob)
+	.replace('[FULLNAME]', data.Name)
+	.replace('[YOURNAME]', data.Name);
+	pdf.create(template, options).toStream(function (err, stream) {
 		stream.pipe(res);
 	});
-
-	return true;
+	// return true;
 }
 
 
