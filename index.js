@@ -18,7 +18,12 @@ app.get('/', (req, res) => {
 
 app.post('/generate', (req,res) => {
 	res.setHeader('Content-type', 'application/pdf');
-	generatePDF(req, res);
+	generatePDF(req, res, 'email');
+});
+
+app.post('/id', (req,res) => {
+	res.setHeader('Content-type', 'application/pdf');
+	generatePDF(req, res, 'id');
 });
 
 app.listen(port, (req,res) => {
