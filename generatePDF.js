@@ -12,7 +12,8 @@ const options = {
 var generatePDF = (req, res) => {
 	var data = req.query;
 	var template = fs.readFileSync(path.resolve(__dirname + '/email-template.html'), 'utf-8').replace('[FULLNAME]', data.Name)
-	.replace('[JK]', data.JK)
+	.replace('[CENTER]', data.Center)
+	.replace('[REGIONAL]', data.Regional)
 	.replace('[LOCALBOARD]', data.Local)
 	.replace('[BARCODE]', data.Barcode)
 	.replace('[USER]', data.Image)
