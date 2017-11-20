@@ -13,18 +13,21 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-	res.send('elo')
+	res.send('Welcome to PDF Generator');
+	res.send('Node, html-pdf and express with Vanilla JS');
+	res.send('for EmailPDF /generate?param=paramValue');
+	res.send('for IdCardPDF /id?param=paramValue');
 });
 
 app.post('/generate', (req,res) => {
 	res.setHeader('Content-type', 'application/pdf');
-	res.setHeader('Content-disposition', 'attachment; filename=registeration-verification.pdf');	
+	res.setHeader('Content-disposition', 'attachment; filename=printRegisteration.pdf');	
 	generatePDF(req, res, 'email');
 });
 
 app.post('/id', (req,res) => {
 	res.setHeader('Content-type', 'application/pdf');
-	res.setHeader('Content-disposition', 'attachment; filename=id-print.pdf');
+	res.setHeader('Content-disposition', 'attachment; filename=printID.pdf');
 	generatePDF(req, res, 'id');
 });
 
