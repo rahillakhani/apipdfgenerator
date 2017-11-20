@@ -18,13 +18,13 @@ app.get('/', (req, res) => {
 
 app.post('/generate', (req,res) => {
 	res.setHeader('Content-type', 'application/pdf');
-	res.setHeader('Content-disposition', 'attachment; filename=registeration-verification');	
+	res.setHeader('Content-disposition', 'attachment; filename=registeration-verification.pdf');	
 	generatePDF(req, res, 'email');
 });
 
 app.post('/id', (req,res) => {
 	res.setHeader('Content-type', 'application/pdf');
-	res.setHeader('Content-disposition', 'attachment; filename=id-print');
+	res.setHeader('Content-disposition', 'attachment; filename=id-print.pdf');
 	generatePDF(req, res, 'id');
 });
 
