@@ -13,11 +13,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-	res.send('Welcome to PDF Generator');
-	res.send('Node, html-pdf and express with Vanilla JS');
-	res.send('for EmailPDF /generate?param=paramValue');
-	res.send('for IdCardPDF /id?param=paramValue');
-	res.send('contact github:rahillakhani email:lakhani.rj@gmail.com');
+	res.send('Welcome to PDF Generator <br> Node, html-pdf and express with Vanilla JS<br> for EmailPDF /generate?param=paramValue<br> for IdCardPDF /id?param=paramValue <br> contact github:rahillakhani email:lakhani.rj@gmail.com');
 });
 
 app.post('/generate', (req,res) => {
