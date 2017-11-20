@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 	res.send('Node, html-pdf and express with Vanilla JS');
 	res.send('for EmailPDF /generate?param=paramValue');
 	res.send('for IdCardPDF /id?param=paramValue');
+	res.send('contact github:rahillakhani email:lakhani.rj@gmail.com');
 });
 
 app.post('/generate', (req,res) => {
