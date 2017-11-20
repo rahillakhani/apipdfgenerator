@@ -22,17 +22,9 @@ var generatePDF = (req, res, flag) => {
 	.replace('[FULLNAME]', data.Name)
 	.replace('[EMERGENCY_CONTACT]', data.emergency)
 	.replace('[YOURNAME]', data.Name);
-	pdf.create(template, options).toStream(function (err, stream, flag) {
-		// res.filename = flag + '-download';
-		// res.writeHead(200, {
-		// 	"Content-Type": "application/pdf",
-		// 	"Content-Disposition": "attachment; filename=" + flag
-		// });
-		// console.log(res);
+	pdf.create(template, options).toStream(function (err, stream) {
 		stream.pipe(res);
 	});
-	// return true;
 }
-
 
 module.exports = generatePDF;
