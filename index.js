@@ -17,14 +17,14 @@ app.get('/', (req, res) => {
 });
 
 app.post('/generate', (req,res) => {
-	res.setHeader('Content-type', 'application/pdf');
-	res.setHeader('Content-disposition', 'attachment; filename=printRegisteration.pdf');	
+	res.header('Content-type', 'application/pdf');
+	res.header('Content-Disposition', 'attachment; filename="printRegisteration.pdf"');	
 	generatePDF(req, res, 'email');
 });
 
 app.post('/id', (req,res) => {
-	res.setHeader('Content-type', 'application/pdf');
-	res.setHeader('Content-disposition', 'attachment; filename=printID.pdf');
+	res.header('Content-type', 'application/pdf');
+	res.header('Content-Disposition', 'attachment; filename="printID.pdf"');
 	generatePDF(req, res, 'id');
 });
 
