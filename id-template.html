@@ -4,30 +4,136 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>id pdf template</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script>
+		
+	</script>
 	<style>
-		html {
-			background: url('./id-card.png') transparent no-repeat;
-			background-size: auto 100%;
-			background-position: left top;
+		body{
+			font-size: 20px;
+		}
+		.main-container {
+			background: url('[PATH]/img/patter1.png') left top;
+			width: 599px;
+			height: 720px;
+			border: 10px solid #ffffff;
+			position: relative;
+		}
+		.main-container > div {
+		}
+		.main-container .left {
+			background: #f2717a;
+			width: 20px;
+			padding: 40px;
+			font-size: 50px;
+			word-wrap: break-word;
+			text-align: center;
+			color:#fff;
+		}
+		.main-container .left span {
+			display: block;
+			vertical-align: middle;
+		}
+		.content {
+			vertical-align: top;
+		}
+		.center {
+			text-align: center;
+		}
+		.logo img {
+			width: 400px;
+		}
+		.date {
+			font-size: 45px;
+			color: #00aab0;
+		}
+		.level {
+			position: absolute;
+			right: 2%;
+			top: 2%;
+		}
+		.flex {
+			display: flex;
+		}
+		.flex > div {
+			flex: 1;
+		}
+		.details {
+			font-size: 35px;
 		}
 	</style>
 </head>
 <body>
-		<div>
-			[VOL_NAME]
-			[VOL_DOB]
-			[VOL_CONTACT]
-			[VOL_EMERGENCY]
-			[VOL_PHOTO]
-			[VOL_UUID]
-			<img src=[VOL_BARCODE]/>
-			[VOL_DEPT]
-			[VOL_SUBDEPT]
-			[VOL_LEVEL]
-			[VOL_JK]
-			[VOL_CO]
-			[VOL_RG]
-		</div>
+	<table class="main-container">
+		<tr>
+			<td class="left">
+				<script>document.write('<span>' + 'Transportation'.split('').join('</span><span>') + '</span>');</script>
+			</td>
+			<td class="content">
+				<h1 class="level">DL</h1>
+				<div class="center">
+					 [PATH]/img/logo.png
+					<img src="[PATH]/img/logo.png" alt="">
+				</div>
+				<div class="date center">
+					Gujarat, 23<sup>rd</sup> 
+					February
+				</div>
+				<div class="flex details">
+					<div class="detp">
+						PARKING ZONE1
+
+						<br/>
+						<br/>
+						Shamshuddin<br/>
+						Merchant
+						<br/>
+						<br/>
+						<img src=[VOL_BARCODE]/>
+					</div>
+					<div class="id">
+						<img src=[VOL_PHOTO]&export=download width=300 />
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<!-- <table style="min-height: 500px; margin-left: 50px; background: url('/Users/rahil/Desktop/patter1.png')">
+			<tr>
+				<td rowspan=8></td>
+				<td>
+					Padhramni Mubarak - February, 2017
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img src=[VOL_PHOTO]&export=download width=300 />
+					<p>[VOL_UUID]s</p>
+				</td>
+			</tr>
+			<tr>
+				<td>[VOL_NAME]</td>
+			</tr>
+			<tr>
+				<td>[VOL_DOB]</td>
+			</tr>
+			<tr>
+				<td>[VOL_CONTACT]</td>
+			</tr>
+			<tr>
+				<td>[VOL_EMERGENCY]</td>
+			</tr>
+			<tr>
+				<td>[VOL_DEPT] [VOL_LEVEL] [VOL_SUBDEPT]</td>
+			</tr>
+			<tr>
+				<td>[VOL_JK] [VOL_CO] [VOL_RG]</td>
+			</tr>
+			<tr>
+				<td><img src=[VOL_BARCODE]/></td>
+			</tr>
+			
+			</table>
+	</table> -->
 </body>
 
 </html>

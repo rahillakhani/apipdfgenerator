@@ -6,7 +6,7 @@ let generatePDF = require('./generatePDF.js');
 var port = process.env.PORT || 8080;
 
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/img'));
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
@@ -27,6 +27,8 @@ app.post('/id', (req,res) => {
 	res.header('Content-Disposition', 'attachment; filename="printID.pdf"');
 	generatePDF(req, res, 'id');
 });
+
+
 
 app.listen(port, (req,res) => {
 	console.log('started at ', port);

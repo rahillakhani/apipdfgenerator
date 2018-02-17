@@ -30,20 +30,23 @@ const options = {
 
 var generatePDF = (req, res, flag) => {
 	var data = req.query;
-	console.log(data.jk);
-	var template = fs.readFileSync(path.resolve(__dirname + `/${flag}-template.html`), 'utf-8').replace('[VOL_NAME]', data.name)
+	var location = req.headers.host;
+	
+	var template = fs.readFileSync(path.resolve(__dirname + `/${flag}-template.html`), 'utf-8')
+		.replace('[VOL_NAME]', data.name)
 		.replace('[VOL_DOB]', data.dob)
 		.replace('[VOL_CONTACT]', data.contact)
 		.replace('[VOL_EMERGENCY]', data.emergency)
 		.replace('[VOL_PHOTO]', data.photo)
 		.replace('[VOL_UUID]', data.uuid)
 		.replace('[VOL_BARCODE]', data.barcode)
-		.replace('[VOL_DEPT]', data.dept)
+		.replace('[VOL_DEPT]', ('<span>' + data.dept.split('').join('</span><span>') + '</span>'))
 		.replace('[VOL_SUBDEPT]', data.subdept)
 		.replace('[VOL_LEVEL]', data.level)
 		.replace('[VOL_JK]', data.jk)
 		.replace('[VOL_CO]', data.co)
-		.replace('[VOL_RG]', data.re);
+		.replace('[VOL_RG]', data.re)
+		.replace('[PATH]',location);
 
 	pdf.create(template, options).toStream(function (err, stream) {
 		stream.pipe(res);
