@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 
 let generatePDF = require('./generatePDF.js');
+let generateNewPDF = require('./generatePDFNew.js');
 var port = process.env.PORT || 8080;
 
 
@@ -32,7 +33,7 @@ app.post('/id', (req,res) => {
 app.post('/cheqprinted', (req,res) => {
 	res.header('Content-type', 'application/pdf');
 	res.header('Content-Disposition', 'attachment; filename="checkprintedencore.pdf"');
-	generatePDF(req, res, 'cheq-printed');
+	generateNewPDF(req, res, 'cheq-printed');
 });
 
 app.listen(port, (req,res) => {
