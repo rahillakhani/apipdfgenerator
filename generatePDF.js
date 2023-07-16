@@ -1,7 +1,7 @@
 var pdf = require('html-pdf');
 var fs = require('fs');
 var path = require('path');
-
+const imageToUri = require('image-to-uri');
 
 const options = {
 	"format": "Letter",
@@ -46,22 +46,27 @@ var generatePDF = (req, res, flag) => {
 			.replace('[VOL_CO]', data.co)
 			.replace('[VOL_RG]', data.re);
 	} else {
-		console.log("res.body", res.body);
-		const {name} = res.body;
+		console.log("res.body", req.query);
+		const dt = new Date();
+		const { name, check_number, date, payee_name, amount, bank_address, memo, signature, ocr } = req.query;
+		const splitAdd = bank_address.split(',');
+		let setAddress = ""
+		splitAdd.map(((el, i) => {
+			setAddress = `${setAddress}${i !== 0 ? "," : ""}<br />${el}`;
+		}))
+		console.log("splitAdd", splitAdd);
+
 		var template = fs.readFileSync(path.resolve(__dirname + `/${flag}-template.html`), 'utf-8')
+			.replace('[LOGOURL]', imageToUri('./Encore-Tech-Inc-Footer-Logo-300x138-1.png'))
 			.replace('[NAME]', name)
-			// .replace('[VOL_DOB]', data.dob)
-			// .replace('[VOL_CONTACT]', data.contact)
-			// .replace('[VOL_EMERGENCY]', data.emergency)
-			// .replace('[VOL_PHOTO]', data.photo)
-			// .replace('[VOL_UUID]', data.uuid)
-			// .replace('[VOL_BARCODE]', data.barcode)
-			// .replace('[VOL_DEPT]', data.dept)
-			// .replace('[VOL_SUBDEPT]', data.subdept)
-			// .replace('[VOL_LEVEL]', data.level)
-			// .replace('[VOL_JK]', data.jk)
-			// .replace('[VOL_CO]', data.co)
-			// .replace('[VOL_RG]', data.re);
+			.replace('[CHECKNUM]', check_number)
+			.replace('[DATE]', date)
+			.replace('[PAYEENAME]', payee_name)
+			.replace('[AMOUNT]', amount)
+			.replace('[BANK_ADDRESS]', setAddress)
+			.replace('[MEMO]', memo)
+			.replace('[SIGNATURE]', signature)
+			.replace('[OCR]', ocr);
 	}
 	pdf.create(template, options).toStream(function (err, stream) {
 		stream.pipe(res);

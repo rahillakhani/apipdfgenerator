@@ -4,7 +4,7 @@
   "description": "pdf generator api",
   "main": "index.js",
   "scripts": {
-    "heroku-prebuild":"npm i",
+    "heroku-prebuild": "npm i",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +18,6 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "html-pdf": "^2.2.0",
-    "pdfkit": "^0.8.3"
+    "image-to-uri": "^1.0.0"
   }
 }
