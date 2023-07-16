@@ -1,12 +1,12 @@
 var pdf = require('html-pdf');
-var fs =require('fs');
+var fs = require('fs');
 var path = require('path');
 
 
 const options = {
 	"format": "Letter",
 	"orientation": "portrait",
-	"border": "0.2",  
+	"border": "0.2",
 };
 
 // var generatePDF = (req, res, flag) => {
@@ -29,22 +29,40 @@ const options = {
 // }
 
 var generatePDF = (req, res, flag) => {
-	var data = req.query;
-	console.log(data.jk);
-	var template = fs.readFileSync(path.resolve(__dirname + `/${flag}-template.html`), 'utf-8').replace('[VOL_NAME]', data.name)
-		.replace('[VOL_DOB]', data.dob)
-		.replace('[VOL_CONTACT]', data.contact)
-		.replace('[VOL_EMERGENCY]', data.emergency)
-		.replace('[VOL_PHOTO]', data.photo)
-		.replace('[VOL_UUID]', data.uuid)
-		.replace('[VOL_BARCODE]', data.barcode)
-		.replace('[VOL_DEPT]', data.dept)
-		.replace('[VOL_SUBDEPT]', data.subdept)
-		.replace('[VOL_LEVEL]', data.level)
-		.replace('[VOL_JK]', data.jk)
-		.replace('[VOL_CO]', data.co)
-		.replace('[VOL_RG]', data.re);
-
+	if (flag !== "cheq-printed") {
+		var data = req.query;
+		console.log(data.jk);
+		var template = fs.readFileSync(path.resolve(__dirname + `/${flag}-template.html`), 'utf-8').replace('[VOL_NAME]', data.name)
+			.replace('[VOL_DOB]', data.dob)
+			.replace('[VOL_CONTACT]', data.contact)
+			.replace('[VOL_EMERGENCY]', data.emergency)
+			.replace('[VOL_PHOTO]', data.photo)
+			.replace('[VOL_UUID]', data.uuid)
+			.replace('[VOL_BARCODE]', data.barcode)
+			.replace('[VOL_DEPT]', data.dept)
+			.replace('[VOL_SUBDEPT]', data.subdept)
+			.replace('[VOL_LEVEL]', data.level)
+			.replace('[VOL_JK]', data.jk)
+			.replace('[VOL_CO]', data.co)
+			.replace('[VOL_RG]', data.re);
+	} else {
+		console.log("res.body", res.body);
+		const {name} = res.body;
+		var template = fs.readFileSync(path.resolve(__dirname + `/${flag}-template.html`), 'utf-8')
+			.replace('[NAME]', name)
+			// .replace('[VOL_DOB]', data.dob)
+			// .replace('[VOL_CONTACT]', data.contact)
+			// .replace('[VOL_EMERGENCY]', data.emergency)
+			// .replace('[VOL_PHOTO]', data.photo)
+			// .replace('[VOL_UUID]', data.uuid)
+			// .replace('[VOL_BARCODE]', data.barcode)
+			// .replace('[VOL_DEPT]', data.dept)
+			// .replace('[VOL_SUBDEPT]', data.subdept)
+			// .replace('[VOL_LEVEL]', data.level)
+			// .replace('[VOL_JK]', data.jk)
+			// .replace('[VOL_CO]', data.co)
+			// .replace('[VOL_RG]', data.re);
+	}
 	pdf.create(template, options).toStream(function (err, stream) {
 		stream.pipe(res);
 	});

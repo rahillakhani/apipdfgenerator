@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1, width=device-width" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Arial Hebrew:wght@400;700&display=swap"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Arial:wght@400&display=swap"
+		/>
+
+		<style>
+			@font-face {
+				font-family: ocrA;
+				src: url(./fonts/OCRA.ttf);
+			}
+
+			body {
+				margin: 0;
+				line-height: normal;
+			}
+			.left {
+				float: left;
+			}
+			.right {
+				float: right;
+			}
+			.clear {
+				clear: both;
+			}
+		</style>
+	</head>
+	<body style="border: 1px solid">
+		<div style="padding: 20px; box-sizing: border-box">
+			<div class="left">
+				<img
+					style="
+						width: 97px;
+						height: 48px;
+						object-fit: cover;
+						margin-left: 20px;
+					"
+					alt=""
+					src="https://encorestores.com/wp-content/uploads/2023/01/Encore-Tech-Inc-Footer-Logo-300x138-1.png"
+				/>
+				<div
+					style="
+						margin-left: 20px;
+						margin-top: 10px;
+						font-size: 12px;
+						display: inline-block;
+						width: 182px;
+						height: 59px;
+					"
+				>
+					<p style="margin: 0">
+						<b>Homewood Encore Shell</b>
+					</p>
+					<p style="margin: 0">Main Account</p>
+					<p style="margin: 0">3945 Lorna Rd</p>
+					<p style="margin: 0">Hoover, AL 35244</p>
+				</div>
+			</div>
+			<div class="right">
+				<div
+					style="
+						padding: 20px;
+						font-size: 12px;
+						font-family: Arial;
+						display: inline-block;
+						width: 100px;
+						height: 19px;
+					"
+				>
+					No. [CHECKNUM]
+					<br />
+					Date: [DATE]
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div
+				style="
+					display: flex;
+					width: 100%;
+					padding: 40px;
+					font-family: 'Arial Hebrew';
+					box-sizing: border-box;
+				"
+			>
+				<div style="flex: 1">
+					<b>
+						<p style="margin: 0">Pay To The</p>
+						<p style="margin: 0">Order Of</p>
+					</b>
+				</div>
+				<div style="flex: 5; border-bottom: 2px solid #333333">
+					[PAYEENAME]
+				</div>
+				<div style="flex: 1; margin-left: 30px">
+					<div class="left">
+						$
+						<br />
+						Dollars
+					</div>
+					<div class="right">[AMOUNT]</div>
+				</div>
+			</div>
+			<div class="left">Memo __________</div>
+			<div class="right">
+				<div class="left">[BANK_ADDRESS]</div>
+				<div
+					class="right"
+					style="min-height: 30px; border-bottom: 2px solid #333"
+				>
+					[SIGNATURE]
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div
+				style="
+					font-family: ocrA;
+					margin-top: 50px;
+					text-align: center;
+					font-weight: bold;
+				"
+			>
+				[OCR]
+			</div>
+		</div>
+	</body>
+</html>

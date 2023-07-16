@@ -28,6 +28,13 @@ app.post('/id', (req,res) => {
 	generatePDF(req, res, 'id');
 });
 
+
+app.post('/cheqprinted', (req,res) => {
+	res.header('Content-type', 'application/pdf');
+	res.header('Content-Disposition', 'attachment; filename="checkprintedencore.pdf"');
+	generatePDF(req, res, 'cheq-printed');
+});
+
 app.listen(port, (req,res) => {
 	console.log('started at ', port);
 });
