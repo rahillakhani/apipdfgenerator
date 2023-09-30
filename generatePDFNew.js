@@ -6,9 +6,9 @@ const imageToUri = require('image-to-uri');
 
 // let file = { url: "http://localhost:8080/cheq-printed-template.html" };
 
-var generateNewPDF = (req, res, flag) => {
+var generateNewPDF = (req, res, flag, isHTML) => {
 	const dt = new Date();
-	const { name, check_number, date, payee_name, amount, bank_address, memo, signature, ocr } = req.query;
+	const { name, check_number, date, payee_name, amount, bank_address, memo, signature, check, routing, acc } = req.query;
 	const splitAdd = bank_address.split(',');
 	let setAddress = ""
 	splitAdd.map(((el, i) => {
@@ -26,14 +26,20 @@ var generateNewPDF = (req, res, flag) => {
 		.replace('[BANK_ADDRESS]', setAddress)
 		.replace('[MEMO]', memo)
 		.replace('[SIGNATURE]', signature)
-		.replace('[OCR]', ocr);
-	let file = { content: template };
-
-	html_to_pdf.generatePdf(file, options).then(pdfBuffer => {
-		console.log("PDF Buffer:-", pdfBuffer);
-		// pdfBuffer.pipe(res);
-		res.write(pdfBuffer, 'binary');
-		res.end(null, 'binary');
-	});
+		.replace('[CHECK]', check)
+		.replace('[ROUTING]', routing)
+		.replace('[ACC]', acc);
+	// let file = { content: template };
+	// if (isHTML) {
+	// html_to_pdf.generatePdf()
+	// return;
+	// }
+	// html_to_pdf.generatePdf(file, options).then(pdfBuffer => {
+	// 	console.log("PDF Buffer:-", pdfBuffer);
+	// 	// pdfBuffer.pipe(res);
+	// 	res.write(pdfBuffer, 'binary');
+	// 	res.end(null, 'binary');
+	// });
+	return template;
 }
 module.exports = generateNewPDF;
